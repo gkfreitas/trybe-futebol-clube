@@ -6,7 +6,6 @@ import {
   Model,
 } from 'sequelize';
 import db from '.';
-import Match from './MatchModel';
 
 class Team extends Model<InferAttributes<Team>,
 InferCreationAttributes<Team>> {
@@ -27,13 +26,10 @@ Team.init({
     type: DataTypes.STRING,
   },
 }, {
+  underscored: true,
   sequelize: db,
   modelName: 'teams',
   timestamps: false,
 });
-Team.belongsTo(Match, { foreignKey: 'homeTeamId', as: 'id' });
-Team.belongsTo(Match, { foreignKey: 'awayTeamId', as: 'id' });
-Match.hasMany(Team, { foreignKey: 'awayTeamId', as: 'id' });
-Match.hasMany(Team, { foreignKey: 'homeTeamId', as: 'id' });
 
 export default Team;

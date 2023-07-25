@@ -1,0 +1,19 @@
+import SequelizeTeamModel from '../database/models/SequelizeTeamModel';
+import { ITeam } from '../Interfaces/ITeam';
+import { ITeamModel } from '../Interfaces/ITeamModel';
+
+export default class TeamModel implements ITeamModel {
+  private model = SequelizeTeamModel;
+
+  async list(): Promise<ITeam[]> {
+    const allTeams = await this.model.findAll();
+
+    return allTeams;
+  }
+
+  async find(id: number): Promise<ITeam | null> {
+    const foundedTeam = await this.model.findByPk(id);
+    if (foundedTeam === null) return null;
+    return foundedTeam;
+  }
+}

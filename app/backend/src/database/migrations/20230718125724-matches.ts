@@ -1,5 +1,5 @@
 import { DataTypes, Model, QueryInterface } from 'sequelize';
-import Match from '../../Interfaces/Match';
+import Match from '../../Interfaces/IMatch';
 export default {
   up(queryInterface: QueryInterface) {
     return queryInterface.createTable<Model<Match>>('matches', {
