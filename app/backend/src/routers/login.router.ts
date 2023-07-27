@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import LoginController from '../controllers/Login.controller';
-import Validations from '../middlewares/ValidateLogin';
+import Validations from '../middlewares/Validations';
 
 const loginController = new LoginController();
 
@@ -15,6 +15,7 @@ router.post(
 router.get(
   '/role',
   Validations.validateToken,
+  (req: Request, res: Response) => loginController.role(req, res),
 );
 
 export default router;

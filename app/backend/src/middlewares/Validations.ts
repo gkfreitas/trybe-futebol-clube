@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import UserModel from '../database/models/SequelizeUserModel';
+import TeamModel from '../models/TeamModel';
 import jwtUtil from '../utils/jwt.util';
 
 function extractToken(authorization: string) {
@@ -18,7 +19,7 @@ class Validations {
     next();
   }
 
-  static async validateToken(req: Request, res: Response):
+  static async validateToken(req: Request, res: Response, next: NextFunction):
   Promise<Promise<Response | void>> {
     const { authorization } = req.headers;
 
@@ -31,12 +32,27 @@ class Validations {
       const decoded = jwtUtil.verify(token);
       const user = await UserModel.findOne({ where: { email: decoded.email } });
       if (!user) return res.status(401).json({ message: 'Token must be a valid token' });
-      const { dataValues: { role } } = user;
-      console.log(role);
-      return res.status(200).json({ role });
+      next();
     } catch (e) {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
+  }
+
+  static async validateMatch(req: Request, res: Response, next: NextFunction):
+  Promise<Response | void> {
+    const { homeTeamId, awayTeamId } = req.body;
+    if (homeTeamId === awayTeamId) {
+      return res.status(422)
+        .json({ message: 'It is not possible to create a match with two equal teams' });
+    }
+    const teamModel = new TeamModel();
+    const allTeams = await teamModel.list();
+    const allIds = allTeams.map((e) => e.id);
+    if (!allIds.includes(homeTeamId) || !allIds.includes(awayTeamId)) {
+      return res.status(404)
+        .json({ message: 'There is no team with such id!' });
+    }
+    next();
   }
 }
 

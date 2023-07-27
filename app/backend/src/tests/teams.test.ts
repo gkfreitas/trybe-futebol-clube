@@ -5,11 +5,6 @@ import SequelizeTeamModel from '../database/models/SequelizeTeamModel';
 import teamsMock from './mocks/teamsMock';
 // @ts-ignore
 import chaiHttp = require('chai-http');;
-
-
-
-
-
 chai.use(chaiHttp);
 
 const { expect } = chai;
