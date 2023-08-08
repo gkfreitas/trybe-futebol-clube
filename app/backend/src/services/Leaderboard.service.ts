@@ -22,7 +22,27 @@ export default class LeaderboardService {
       const newObj = LeaderboardService.transformLeaderboard(e);
       return newObj;
     });
-    return { status: 'SUCCESSFUL', data: leaderboardTransformed };
+    const sortedLeaderBoard = LeaderboardService.sortLeaderboard(leaderboardTransformed);
+    return { status: 'SUCCESSFUL', data: sortedLeaderBoard };
+  }
+
+  static sortLeaderboard(matches: ILeaderboard[]) {
+    const sorted = matches.sort((a, b) => {
+      if (b.totalPoints !== a.totalPoints) {
+        return b.totalPoints - a.totalPoints;
+      }
+      if (b.totalVictories !== a.totalVictories) {
+        return b.totalVictories - a.totalVictories;
+      }
+      if (b.goalsBalance !== a.goalsBalance) {
+        return b.goalsBalance - a.goalsBalance;
+      }
+      if (b.goalsFavor !== a.goalsFavor) {
+        return b.goalsFavor - a.goalsFavor;
+      }
+      return b.totalPoints - a.totalPoints;
+    });
+    return sorted;
   }
 
   static transformLeaderboard(matches: IMatch[]): ILeaderboard {
@@ -36,8 +56,13 @@ export default class LeaderboardService {
       totalLosses: LeaderboardService.returnVictoriesDrawsLoses(matches).loses,
       goalsFavor: LeaderboardService.returnGoals(matches).homeTeamGoals,
       goalsOwn: LeaderboardService.returnGoals(matches).awayTeamGoals,
-
+      goalsBalance: LeaderboardService.returnGoals(matches).homeTeamGoals - LeaderboardService
+        .returnGoals(matches).awayTeamGoals,
+      efficiency: (((LeaderboardService.returnVictoriesDrawsLoses(matches).wins * 3
+      + LeaderboardService
+        .returnVictoriesDrawsLoses(matches).draws) / (matches.length * 3)) * 100).toFixed(2),
     };
+
     return newObj;
   }
 
