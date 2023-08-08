@@ -15,7 +15,6 @@ export default class MatchService {
 
   public async listMatchesFiltered(inProgress: boolean): Promise<ServiceResponse<IMatch[] | null>> {
     const allMatches = await this.matchModel.listFilter(inProgress);
-
     return { status: 'SUCCESSFUL', data: allMatches };
   }
 

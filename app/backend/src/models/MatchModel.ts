@@ -22,7 +22,7 @@ export default class MatchModel implements IMatchModel {
     return newList;
   }
 
-  async listFilter(inProgress: boolean): Promise<IMatch[] | null> {
+  async listFilter(inProgress: boolean): Promise<IMatch[]> {
     const allMatchesFiltered = await this.model.findAll({ where: { inProgress } });
     const allTeams = await this.teamModel.findAll();
     const newList = allMatchesFiltered.map((e) => {
@@ -33,7 +33,6 @@ export default class MatchModel implements IMatchModel {
         awayTeam: { teamName: awayTeamName?.dataValues.teamName } };
       return newArray;
     });
-    console.log(newList);
     return newList;
   }
 
