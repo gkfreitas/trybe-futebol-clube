@@ -8,6 +8,6 @@ export default class LeaderboardController {
 
   public async listLeaderBoard(_req: Request, res: Response) {
     const ServiceResponse = await this.leaderboardService.listLeaderboard();
-    res.status(200).json(ServiceResponse.data);
+    res.status(200).json(ServiceResponse?.data);
   }
 }
