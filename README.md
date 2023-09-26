@@ -42,7 +42,7 @@ Na sua máquina você deve ter:
   *`npm run compose:up`
 </details>
 
-# Endpoints
+# Endpoints simples
 
 *Para executar os testes unitários dos endpoints faça isso:*
   - Entre na pasta app/backend
@@ -57,3 +57,15 @@ Na sua máquina você deve ter:
 ### /login
 
 - Entre no `localhost:3000/login` no login coloque admin@admin.com e na senha coloque secret admin. Você consiguirá entrar no site.
+
+
+### /matches
+
+- Fazendo um GET no `localhost:3001/matches` O Resultado esperado é a lista com todas as partidas do banco de dados.
+
+- Fazendo um GET no `localhost:3001/matches/:id` O Resultado esperado é a lista com o time do ID especificado
+
+
+### /leaderboard/home
+
+- Fazendo um GET no `localhost:3001/leaderboard/home` O Resultado esperado é uma placar com pontos, gols, vitorias, empates e derrotas.
