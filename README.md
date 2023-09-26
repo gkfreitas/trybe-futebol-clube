@@ -5,10 +5,10 @@ Todos os arquivos que estiverem como ultimo commit o Initial commit foram criado
 
 # Requisitos para iniciar o Projetos
 
-
 <details>
-<summary><strong> ⚠️ Configurações mínimas para execução do projeto</strong><summary><br />
-Para iniciar o projeto em sua máquina é nescessário ter:
+<summary><strong> ⚠️ Configurações mínimas para execução do projeto</strong></summary><br />
+
+Na sua máquina você deve ter:
 
  - Sistema Operacional Distribuição Unix
  - Node versão 16
@@ -24,4 +24,5 @@ Para iniciar o projeto em sua máquina é nescessário ter:
 
 ➡️ O`docker-compose` deve ter versão igual ou superior à`ˆ1.29.2`:
   * Caso necessário, acesse o [link da documentação oficial com passos para desinstalar](https://docs.docker.com/compose/install/#uninstallation) a versão atualmente instalada.
+
 </details>
