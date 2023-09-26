@@ -1,9 +1,9 @@
 # Boas vindas ao repositório do Trybe Futebol Clube!
 
 Este é um projeto backend desenvolvido enquanto durante meus estudos na Trybe.
-Todos os arquivos que estiverem como ultimo commit o Initial commit foram criados pela trybe, já os que tiverem outros commits foram criados ou modificados por mim.
+**Todos os arquivos que estiverem como ultimo commit o Initial commit foram criados pela Trybe**, já os que tiverem outros commits foram criados ou modificados por mim.
 
-# Requisitos para iniciar o Projetos
+# Iniciando o Projeto
 
 <details>
 <summary><strong> ⚠️ Configurações mínimas para execução do projeto</strong></summary><br />
@@ -24,5 +24,21 @@ Na sua máquina você deve ter:
 
 ➡️ O`docker-compose` deve ter versão igual ou superior à`ˆ1.29.2`:
   * Caso necessário, acesse o [link da documentação oficial com passos para desinstalar](https://docs.docker.com/compose/install/#uninstallation) a versão atualmente instalada.
+
+</details>
+
+<details>
+<summary><strong> 🔰 Iniciando o projeto</strong></summary><br />
+
+  1. Clone o repositório
+
+- Entre na pasta do repositório que você acabou de clonar:
+  * `cd pasta-do-repositório`
+
+  2. Instale as dependências
+  *`npm run install:apps`
+
+  3. Suba o container
+  *`npm run compose:up`
 
 </details>
