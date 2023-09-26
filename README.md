@@ -40,5 +40,20 @@ Na sua máquina você deve ter:
 
   3. Suba o container
   *`npm run compose:up`
-
 </details>
+
+# Endpoints
+
+*Para executar os testes unitários dos endpoints faça isso:*
+  - Entre na pasta app/backend
+  - Execute o comando no seu terminal `npm run test`
+
+### /teams
+
+- Fazendo um GET no `localhost:3001/teams` O Resultado esperado é a lista com todos os times do banco de dados.
+
+- Fazendo um GET no `localhost:3001/teams/:id` O Resultado esperado é a lista com o time do ID especificado
+
+### /login
+
+- Entre no `localhost:3000/login` no login coloque admin@admin.com e na senha coloque secret admin. Você consiguirá entrar no site.
